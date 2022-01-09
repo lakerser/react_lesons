@@ -1,6 +1,6 @@
 let state = {
     Dialogs: {
-        MyMessages: [{message: 'Hi'}, {message: 'one'}, {message: 'yoo'}],
+        MyMessages: [{message: 'Hi fuckkckckc'}, {message: 'one'}, {message: 'yoo'}],
         MyDialogs: [{name: 'Volodimir', id: '1'}, {name: 'Andrey', id: '2'}, {name: 'Svea', id: '3'}, {
             name: 'Viktor',
             id: '4'
@@ -14,7 +14,7 @@ let state = {
     }
 
 };
-export let addPostt = (PostMessage) => {
+export let addPost = (PostMessage) => {
     let newPost = {
         id: 5,
         text: PostMessage,

@@ -6,7 +6,7 @@ const Profile = (props) => {
     let outPost = props.state.posts.map(el => <Post text={el.text} like={el.likes}/>)
     let addPost = () => {
         let text = newPostElement.current.value;
-        alert(text)
+        props.addPost(text)
     };
 
     let newPostElement = React.createRef();
