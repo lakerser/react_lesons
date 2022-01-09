@@ -28,7 +28,7 @@ const Profile = (props) => {
                     add new post
                 </button>
             </div>
-            <p> </p>
+            <p></p>
 
             {outPost}
 

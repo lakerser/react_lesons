@@ -1,3 +1,6 @@
+import {rerenderEntireTree} from "../render";
+
+
 let state = {
     Dialogs: {
         MyMessages: [{message: 'Hi fuckkckckc'}, {message: 'one'}, {message: 'yoo'}],
@@ -20,6 +23,7 @@ export let addPost = (PostMessage) => {
         text: PostMessage,
         likes: 0
     };
-    state.Profile.posts.push(newPost)
+    state.Profile.posts.push(newPost);
+    rerenderEntireTree(state)
 }
 export default state;
