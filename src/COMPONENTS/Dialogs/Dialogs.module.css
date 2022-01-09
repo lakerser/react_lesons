@@ -1,0 +1,34 @@
+
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+
+
+}
+
+
+.messages {
+    padding: 10px;
+
+}
+
+.textArr{
+    text-align: center;
+}
+.obg{
+    color: blueviolet;
+    opacity: 90%;
+    border-radius: 1px;
+
+}
+
+
+
+.dialogsItems {
+    padding: 10px;
+
+}
+
+.dialogsItems .active {
+    color: red;
+}

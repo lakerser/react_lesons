@@ -1,0 +1,11 @@
+
+.item {
+    font-style: italic;
+    margin-left: 15px;
+}
+
+.itemAdd {
+    display: grid;
+    width: 200px;
+    margin-top: 10px;
+}
