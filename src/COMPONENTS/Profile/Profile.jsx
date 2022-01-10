@@ -1,15 +1,22 @@
 import React, {} from 'react';
 import pr from './Profile.module.css'
 import Post from "./post/post";
+import {changeNewPostT} from "../../state/state";
 
 const Profile = (props) => {
     let outPost = props.state.posts.map(el => <Post text={el.text} like={el.likes}/>)
     let addPost = () => {
-        let text = newPostElement.current.value;
-        props.addPost(text)
+        props.addPost() /* ----------we send text form textarea to state creating new object and sending it to profile data*/
     };
 
     let newPostElement = React.createRef();
+
+    let onPostChange = () => {
+        let text = newPostElement.current.value; /*---------- we read current value of text area*/
+        console.log(text)
+
+        props.changeNewPostT(text) /* when in textarea is some change then we thake this change and push it to data of profile page*/
+    }
 
     return (
         <div className={pr.content}>
@@ -23,7 +30,7 @@ const Profile = (props) => {
             <div className={pr.item}>ava + description</div>
             <div className={pr.item}>my post</div>
             <div className={pr.item + ' ' + pr.itemAdd}>
-                <textarea ref={newPostElement}> </textarea>
+                <textarea onChange={onPostChange} ref={newPostElement} value={props.state.newPostText}> </textarea> {/*i fixed value of text here FROM props*/}
                 <button onClick={addPost}>
                     add new post
                 </button>

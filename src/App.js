@@ -5,6 +5,7 @@ import Navbar from "./COMPONENTS/Navbar/Navbar";
 import Profile from "./COMPONENTS/Profile/Profile";
 import Dialogs from "./COMPONENTS/Dialogs/Dialogs";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {addMessage, changeNewMessageT, changeNewPostT} from "./state/state";
 
 
 const App = (props) => {
@@ -15,9 +16,14 @@ const App = (props) => {
                 <Navbar/>
                 <div className='app-wriper-content'>
                     <Routes>
-                        <Route path="/dialogs" element={<Dialogs state={props.state}/>}/>
+                        <Route path="/dialogs" element={<Dialogs state={props.state}
+                                                                 addMessage={props.addMessage}
+                                                                 changeNewMessageT={props.changeNewMessageT}
+                        />}/>
                         <Route path="/profile" element={<Profile state={props.state.Profile}
-                                                                 addPost={props.addPost}/>}/>
+                                                                 addPost={props.addPost}
+                                                                 changeNewPostT={props.changeNewPostT}
+                        />}/>
                     </Routes>
                 </div>
 
