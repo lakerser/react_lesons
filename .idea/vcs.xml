@@ -2,10 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/git/react-way-of-samurai" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/git/react_lesons" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/git/react_lesons_i" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/git/react_lesons_u" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/react_lesons" vcs="Git" />
   </component>
 </project>

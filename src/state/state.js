@@ -1,4 +1,6 @@
-import {rerenderEntireTree} from "../render";
+let rerenderEntireTree = () => {
+    console.log('state was chanjed')
+}
 
 
 let state = {
@@ -27,7 +29,7 @@ export let addMessage = () => {
 
     };
     state.Dialogs.MyMessages.push(newMessage)
-    state.Dialogs.NewMessageText= ''
+    state.Dialogs.NewMessageText = ''
     rerenderEntireTree(state)
 }
 export let changeNewMessageT = (newM) => {
@@ -50,6 +52,10 @@ export let addPost = () => {
 export let changeNewPostT = (newText) => {
     state.Profile.newPostText = newText;  /*we push text from text area in profile.js and send it in our data of newPostText*/
     rerenderEntireTree(state)  /*reset ui*/
+}
+
+export const subscribe = (callback) => {
+    rerenderEntireTree = callback
 }
 
 export default state;
