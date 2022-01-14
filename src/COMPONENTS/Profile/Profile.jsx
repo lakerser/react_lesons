@@ -1,7 +1,6 @@
 import React, {} from 'react';
 import pr from './Profile.module.css'
 import Post from "./post/post";
-import {changeNewPostT} from "../../state/state";
 
 const Profile = (props) => {
     let outPost = props.state.posts.map(el => <Post text={el.text} like={el.likes}/>)
