@@ -5,7 +5,7 @@ import Post from "./post/post";
 const Profile = (props) => {
     let outPost = props.state.posts.map(el => <Post text={el.text} like={el.likes}/>)
     let addPost = () => {
-        props.addPost() /* ----------we send text form textarea to state creating new object and sending it to profile data*/
+        props.dispatch({type:'ADD-POST'}) /* ----------we send text form textarea to state creating new object and sending it to profile data*/
     };
 
     let newPostElement = React.createRef();
@@ -14,7 +14,8 @@ const Profile = (props) => {
         let text = newPostElement.current.value; /*---------- we read current value of text area*/
         console.log(text)
 
-        props.changeNewPostT(text) /* when in textarea is some change then we thake this change and push it to data of profile page*/
+        let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};
+        props.dispatch(action)/* when in textarea is some change then we thake this change and push it to data of profile page*/
     }
 
     return (
@@ -34,7 +35,7 @@ const Profile = (props) => {
                     add new post
                 </button>
             </div>
-            <p></p>
+
 
             {outPost}
 

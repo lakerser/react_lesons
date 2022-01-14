@@ -11,7 +11,7 @@ import store from "./state/state";
 
         <React.StrictMode>
 
-            <App state={state} changeNewMessageT={store.changeNewMessageT.bind(store)}  addPost={store.addPost.bind(store)} addMessage={store.addMessage.bind(store)} changeNewPostT={store.changeNewPostT.bind(store)}/>
+            <App state={state} dispatch={store.dispatch.bind(store)}/>
         </React.StrictMode>,
         document.getElementById('root')
     );

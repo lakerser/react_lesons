@@ -17,12 +17,12 @@ const App = (props) => {
                 <div className='app-wriper-content'>
                     <Routes>
                         <Route path="/dialogs" element={<Dialogs state={props.state}
-                                                                 addMessage={props.addMessage}
-                                                                 changeNewMessageT={props.changeNewMessageT}
+                                                                dispatch={props.dispatch}
                         />}/>
                         <Route path="/profile" element={<Profile state={props.state.Profile}
-                                                                 addPost={props.addPost}
-                                                                 changeNewPostT={props.changeNewPostT}
+                                                                 dispatch={props.dispatch}
+
+
                         />}/>
                     </Routes>
                 </div>

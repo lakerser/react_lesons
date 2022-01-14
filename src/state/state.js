@@ -19,30 +19,18 @@ let store = {
         }
 
     },
-
-    getState(){
-      return this._state
-    },
     rerenderEntireTree() {
         console.log('state was chanjed')
     },
-    addPost() {
-        let newPost = {
-            id: 5,
-            text: this._state.Profile.newPostText,
-            likes: 0
-        };
-        this._state.Profile.posts.push(newPost);  /*we push text from text area in profile.js and send it in our data of posts*/
-        this._state.Profile.newPostText = ''
-        this.rerenderEntireTree(this._state)  /*reset ui*/
-    },
-    changeNewPostT(newText) {
-        this._state.Profile.newPostText = newText;  /*we push text from text area in profile.js and send it in our data of newPostText*/
-        this.rerenderEntireTree(this._state)  /*reset ui*/
+
+    getState() {
+        return this._state
     },
     subscribe(callback) {
         this.rerenderEntireTree = callback
     },
+
+
     addMessage() {
         let newMessage = {
             message: this._state.Dialogs.NewMessageText,
@@ -55,11 +43,28 @@ let store = {
     changeNewMessageT(newM) {
         this._state.Dialogs.NewMessageText = newM;  /*we push text from text area in profile.js and send it in our data of newPostText*/
         this.rerenderEntireTree(this._state)  /*reset ui*/
+    },
+    dispatch(action) {
+        if (action.type === "ADD-POST") {
+            let newPost = {
+                id: 5,
+                text: this._state.Profile.newPostText,
+                likes: 0
+            };
+            this._state.Profile.posts.push(newPost);  /*we push text from text area in profile.js and send it in our data of posts*/
+            this._state.Profile.newPostText = ''
+            this.rerenderEntireTree(this._state)  /*reset ui*/
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT')
+            this._state.Profile.newPostText = action.newText;  /*we push text from text area in profile.js and send it in our data of newPostText*/
+            this.rerenderEntireTree(this._state)  /*reset ui*/
+
     }
-    
+
+
 }
 
 
 
 
 export default store;
+window.store = store;
