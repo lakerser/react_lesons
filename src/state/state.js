@@ -1,3 +1,6 @@
+const ADD_POST = 'ADD-POST';
+const updatenewposttext = 'UPDATE-NEW-POST-TEXT';
+
 let store = {
 
     _state: {
@@ -45,7 +48,7 @@ let store = {
         this.rerenderEntireTree(this._state)  /*reset ui*/
     },
     dispatch(action) {
-        if (action.type === "ADD-POST") {
+        if (action.type === ADD_POST) {
             let newPost = {
                 id: 5,
                 text: this._state.Profile.newPostText,
@@ -54,16 +57,28 @@ let store = {
             this._state.Profile.posts.push(newPost);  /*we push text from text area in profile.js and send it in our data of posts*/
             this._state.Profile.newPostText = ''
             this.rerenderEntireTree(this._state)  /*reset ui*/
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT')
-            this._state.Profile.newPostText = action.newText;  /*we push text from text area in profile.js and send it in our data of newPostText*/
-            this.rerenderEntireTree(this._state)  /*reset ui*/
+        } else {
+            if (action.type === updatenewposttext)
+                this._state.Profile.newPostText = action.newText;
+        }  /*we push text from text area in profile.js and send it in our data of newPostText*/
+        this.rerenderEntireTree(this._state)  /*reset ui*/
 
     }
 
 
 }
+export let postActionCreator = () => {
+    return {
+        type: ADD_POST
+    }
+}
+export let updateNewPostTextActionCreator = (text) => {
+    return {
+        type: updatenewposttext,
+        newText: text
 
-
+    }
+}
 
 
 export default store;

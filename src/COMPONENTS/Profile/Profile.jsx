@@ -1,11 +1,16 @@
 import React, {} from 'react';
 import pr from './Profile.module.css'
 import Post from "./post/post";
+import {postActionCreator, updateNewPostTextActionCreator} from "../../state/state";
+
+
+
 
 const Profile = (props) => {
     let outPost = props.state.posts.map(el => <Post text={el.text} like={el.likes}/>)
     let addPost = () => {
-        props.dispatch({type:'ADD-POST'}) /* ----------we send text form textarea to state creating new object and sending it to profile data*/
+        props.dispatch(postActionCreator()) /* ----------we send text form textarea to state creating new object and sending it to profile data*/
+
     };
 
     let newPostElement = React.createRef();
@@ -14,7 +19,7 @@ const Profile = (props) => {
         let text = newPostElement.current.value; /*---------- we read current value of text area*/
         console.log(text)
 
-        let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};
+        let action = updateNewPostTextActionCreator(text);
         props.dispatch(action)/* when in textarea is some change then we thake this change and push it to data of profile page*/
     }
 
@@ -30,7 +35,8 @@ const Profile = (props) => {
             <div className={pr.item}>ava + description</div>
             <div className={pr.item}>my post</div>
             <div className={pr.item + ' ' + pr.itemAdd}>
-                <textarea onChange={onPostChange} ref={newPostElement} value={props.state.newPostText}> </textarea> {/*i fixed value of text here FROM props*/}
+                <textarea onChange={onPostChange} ref={newPostElement}
+                          value={props.state.newPostText}> </textarea> {/*i fixed value of text here FROM props*/}
                 <button onClick={addPost}>
                     add new post
                 </button>
