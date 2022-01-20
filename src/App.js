@@ -5,7 +5,6 @@ import Navbar from "./COMPONENTS/Navbar/Navbar";
 import Profile from "./COMPONENTS/Profile/Profile";
 import Dialogs from "./COMPONENTS/Dialogs/Dialogs";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import {addMessage, changeNewMessageT, changeNewPostT} from "./state/state";
 
 
 const App = (props) => {
@@ -19,7 +18,7 @@ const App = (props) => {
                         <Route path="/dialogs" element={<Dialogs state={props.state}
                                                                  addMessage={props.addMessage}
                                                                  changeNewMessageT={props.changeNewMessageT}
-                                                                dispatch={props.dispatch}
+                                                                 dispatch={props.dispatch}
                         />}/>
                         <Route path="/profile" element={<Profile state={props.state.Profile}
                                                                  dispatch={props.dispatch}
