@@ -2,6 +2,8 @@ import React from "react";
 import s from './Dialogs.module.css'
 import Message from "./message/message";
 import DialogItem from "./dialogItem/DialogsItems";
+import { sendNewMessageActionCreator} from "../../state/state";
+import {updateNewMessageActionCreator} from "../../state/state";
 
 const Dialogs = (props) => {
     let dialogsItems = props.state.Dialogs.MyDialogs.map(dialog =>
@@ -13,7 +15,7 @@ const Dialogs = (props) => {
     );
     let addMassage = () => {
         let text = addMessageEl.current.value;
-        props.addMessage(text)
+       props.dispatch( sendNewMessageActionCreator(text))
 
     }
     let addMessageEl = React.createRef();
@@ -21,9 +23,7 @@ const Dialogs = (props) => {
     let onMessageChange = ()=>{
       let message = addMessageEl.current.value
         console.log(message)
-        props.changeNewMessageT(message)
-
-
+       props.dispatch( updateNewMessageActionCreator(message))
     }
     return (
         <div className={s.dialogs}>

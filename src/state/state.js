@@ -1,11 +1,15 @@
 const ADD_POST = 'ADD-POST';
 const updatenewposttext = 'UPDATE-NEW-POST-TEXT';
+const updatenewmessagetext = 'UPDATE-NEW-MESSAGE-TEXT';
+const sendMessage = 'SEND-NEW-MESSAGE'
 
 let store = {
 
     _state: {
         Dialogs: {
-            MyMessages: [{message: 'Hi '}, {message: 'one'}, {message: 'yoo'}],
+            MyMessages: [{message: 'Hi '},
+                {message: 'one'},
+                {message: 'yoo'}],
             NewMessageText: '',
             MyDialogs: [{name: 'Volodimir', id: '1'},
                 {name: 'Andrey', id: '2'},
@@ -34,19 +38,19 @@ let store = {
     },
 
 
-    addMessage() {
-        let newMessage = {
-            message: this._state.Dialogs.NewMessageText,
-
-        };
-        this._state.Dialogs.MyMessages.push(newMessage)
-        this._state.Dialogs.NewMessageText = ''
-        this.rerenderEntireTree(this._state)
-    },
-    changeNewMessageT(newM) {
-        this._state.Dialogs.NewMessageText = newM;  /*we push text from text area in profile.js and send it in our data of newPostText*/
-        this.rerenderEntireTree(this._state)  /*reset ui*/
-    },
+    // addMessage() {
+    //     let newMessage = {
+    //         message: this._state.Dialogs.NewMessageText,
+    //
+    //     };
+    //     this._state.Dialogs.MyMessages.push(newMessage)
+    //     this._state.Dialogs.NewMessageText = ''
+    //     this.rerenderEntireTree(this._state)
+    // },
+    // changeNewMessageT(newM) {
+    //     this._state.Dialogs.NewMessageText = newM;  /*we push text from text area in profile.js and send it in our data of newPostText*/
+    //     this.rerenderEntireTree(this._state)  /*reset ui*/
+    // },
     dispatch(action) {
         if (action.type === ADD_POST) {
             let newPost = {
@@ -57,10 +61,29 @@ let store = {
             this._state.Profile.posts.push(newPost);  /*we push text from text area in profile.js and send it in our data of posts*/
             this._state.Profile.newPostText = ''
             this.rerenderEntireTree(this._state)  /*reset ui*/
-        } else {
-            if (action.type === updatenewposttext)
-                this._state.Profile.newPostText = action.newText;
+        } else if (action.type === updatenewposttext) {
+            this._state.Profile.newPostText = action.newText;
         }  /*we push text from text area in profile.js and send it in our data of newPostText*/
+        else if (action.type === updatenewmessagetext) {
+            this._state.Dialogs.NewMessageText = action.body;  /*we push text from text area in profile.js and send it in our data of newPostText*/
+            this.rerenderEntireTree(this._state)  /*reset ui*/
+        } else if (action.type === sendMessage) {
+            let body = this._state.Dialogs.NewMessageText
+            this._state.Dialogs.NewMessageText = ''
+            this._state.Dialogs.MyMessages.push({id: 6, message: body})
+            this.rerenderEntireTree(this._state)
+
+
+            // this._state.Dialogs.NewMessageText = action.body;  /*we push text from text area in profile.js and send it in our data of newPostText*/
+            // this.rerenderEntireTree(this._state)  /*reset ui*/
+            // let newMessage = {
+            //     message: this._state.Dialogs.NewMessageText,
+            //
+            // };
+            // this._state.Dialogs.MyMessages.push(newMessage)
+            // this._state.Dialogs.NewMessageText = ''
+            // this.rerenderEntireTree(this._state)
+        }
         this.rerenderEntireTree(this._state)  /*reset ui*/
 
     }
@@ -77,6 +100,18 @@ export let updateNewPostTextActionCreator = (text) => {
         type: updatenewposttext,
         newText: text
 
+    }
+
+}
+export let sendNewMessageActionCreator = () => {
+    return {
+        type: sendMessage
+    }
+}
+export let updateNewMessageActionCreator = (body) => {
+    return {
+        type: updatenewmessagetext,
+        body: body
     }
 }
 
