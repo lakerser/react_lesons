@@ -1,7 +1,6 @@
-const ADD_POST = 'ADD-POST';
-const updatenewposttext = 'UPDATE-NEW-POST-TEXT';
-const updatenewmessagetext = 'UPDATE-NEW-MESSAGE-TEXT';
-const sendMessage = 'SEND-NEW-MESSAGE'
+import profileReduser from "./profileReduser";
+import dialogReduser from "./dialogReduser";
+
 
 let store = {
 
@@ -52,68 +51,21 @@ let store = {
     //     this.rerenderEntireTree(this._state)  /*reset ui*/
     // },
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: 5,
-                text: this._state.Profile.newPostText,
-                likes: 0
-            };
-            this._state.Profile.posts.push(newPost);  /*we push text from text area in profile.js and send it in our data of posts*/
-            this._state.Profile.newPostText = ''
-            this.rerenderEntireTree(this._state)  /*reset ui*/
-        } else if (action.type === updatenewposttext) {
-            this._state.Profile.newPostText = action.newText;
-        }  /*we push text from text area in profile.js and send it in our data of newPostText*/
-        else if (action.type === updatenewmessagetext) {
-            this._state.Dialogs.NewMessageText = action.body;  /*we push text from text area in profile.js and send it in our data of newPostText*/
-            this.rerenderEntireTree(this._state)  /*reset ui*/
-        } else if (action.type === sendMessage) {
-            let body = this._state.Dialogs.NewMessageText
-            this._state.Dialogs.NewMessageText = ''
-            this._state.Dialogs.MyMessages.push({id: 6, message: body})
-            this.rerenderEntireTree(this._state)
+
+        this._state.Profile = profileReduser(this._state.Profile, action)
+        this._state.Dialogs = dialogReduser(this._state.Dialogs, action)
 
 
-            // this._state.Dialogs.NewMessageText = action.body;  /*we push text from text area in profile.js and send it in our data of newPostText*/
-            // this.rerenderEntireTree(this._state)  /*reset ui*/
-            // let newMessage = {
-            //     message: this._state.Dialogs.NewMessageText,
-            //
-            // };
-            // this._state.Dialogs.MyMessages.push(newMessage)
-            // this._state.Dialogs.NewMessageText = ''
-            // this.rerenderEntireTree(this._state)
-        }
+
+
         this.rerenderEntireTree(this._state)  /*reset ui*/
 
     }
 
 
 }
-export let postActionCreator = () => {
-    return {
-        type: ADD_POST
-    }
-}
-export let updateNewPostTextActionCreator = (text) => {
-    return {
-        type: updatenewposttext,
-        newText: text
 
-    }
 
-}
-export let sendNewMessageActionCreator = () => {
-    return {
-        type: sendMessage
-    }
-}
-export let updateNewMessageActionCreator = (body) => {
-    return {
-        type: updatenewmessagetext,
-        body: body
-    }
-}
 
 
 export default store;

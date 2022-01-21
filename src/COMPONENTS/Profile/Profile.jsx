@@ -1,7 +1,7 @@
 import React, {} from 'react';
 import pr from './Profile.module.css'
 import Post from "./post/post";
-import {postActionCreator, updateNewPostTextActionCreator} from "../../state/state";
+import {postActionCreator, updateNewPostTextActionCreator} from "../../state/profileReduser";
 
 
 

@@ -2,8 +2,8 @@ import React from "react";
 import s from './Dialogs.module.css'
 import Message from "./message/message";
 import DialogItem from "./dialogItem/DialogsItems";
-import {sendNewMessageActionCreator} from "../../state/state";
-import {updateNewMessageActionCreator} from "../../state/state";
+import {sendNewMessageActionCreator, updateNewMessageActionCreator} from "../../state/dialogReduser";
+
 
 const Dialogs = (props) => {
     let dialogsItems = props.state.Dialogs.MyDialogs.map(dialog =>
