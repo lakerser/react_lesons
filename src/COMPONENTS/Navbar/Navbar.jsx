@@ -6,24 +6,24 @@ const Navbar = () => {
         <nav className={Nav.nav}>
             <div>
                 <div className={Nav.item}>
-                    <NavLink className={navData=>navData.isActive ? Nav.active : Nav.item} to="/profile">Profile</NavLink>
+                    <NavLink className={navData=>navData.isActive ? Nav.active : Nav.item} to="/Profile">Profile</NavLink>
 
                 </div>
 
                 <div className={Nav.item}>
-                    <NavLink className={navData=>navData.isActive ? Nav.active : Nav.item} to="/dialogs">Massages</NavLink>
+                    <NavLink className={navData=>navData.isActive ? Nav.active : Nav.item} to="/Dialogs">Massages</NavLink>
                 </div>
 
                 <div className={Nav.item}>
-                    <NavLink  to="/News">News</NavLink>
+                    <NavLink  to="/Dialogs">News</NavLink>
                 </div>
 
                 <div className={Nav.item}>
-                    <NavLink to="/Music">Music</NavLink>
+                    <NavLink to="/Dialogs">Music</NavLink>
                 </div>
 
                 <div className={Nav.item}>
-                    <NavLink  to="/Settings">Settings</NavLink>
+                    <NavLink  to="/Dialogs">Settings</NavLink>
                 </div>
 
 

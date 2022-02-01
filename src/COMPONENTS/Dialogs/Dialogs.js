@@ -2,8 +2,6 @@ import React from "react";
 import s from './Dialogs.module.css'
 import Message from "./message/message";
 import DialogItem from "./dialogItem/DialogsItems";
-import {sendNewMessageActionCreator, updateNewMessageActionCreator} from "../../state/dialogReduser";
-
 
 const Dialogs = (props) => {
     let dialogsItems = props.state.Dialogs.MyDialogs.map(dialog =>
@@ -14,18 +12,11 @@ const Dialogs = (props) => {
         <Message message={el.message}/>
     );
     let addMassage = () => {
-        let text = props.state.NewMessageText;
-        props.dispatch(sendNewMessageActionCreator(text))
+        let text = addMessageEl.current.value;
+        alert(text);
 
     }
-    // let addMessageEl = React.createRef();
-
-    let onMessageChange = (e) => {
-        let message = e.target.value
-        console.log(message)
-        props.dispatch(updateNewMessageActionCreator(message))
-    }
-    const placeholder = 'Enter your message';
+    let addMessageEl = React.createRef();
     return (
         <div className={s.dialogs}>
 
@@ -40,11 +31,7 @@ const Dialogs = (props) => {
                 {messagesElements}
             </div>
             <div className={s.textArr}>
-                <textarea placeholder={placeholder}
-                          className={s.obg}
-                          onChange={onMessageChange}
-                          // ref={addMessageEl}
-                          value={props.state.Dialogs.NewMessageText}/> {/*i fixed value of text here*/}
+                <textarea className={s.obg} ref={addMessageEl} id="" cols="15" rows="2"></textarea>
                 <button className={s.obg} onClick={addMassage}>send</button>
             </div>
 
