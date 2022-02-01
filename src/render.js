@@ -2,14 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import {addPost} from "./state/state";
+import {addPost, updateNewPostText} from "./state/state";
 
 export let rerenderEntireTree = (state) => {
 
     ReactDOM.render(
         <React.StrictMode>
-            <App state={state} addPost={addPost}/>
+            <App updateNewPostText={updateNewPostText} state={state} addPost={addPost}/>
         </React.StrictMode>,
         document.getElementById('root')
     );

@@ -10,20 +10,28 @@ let state = {
         }, {name: 'Ivan', id: '5'}]
     },
     Profile: {
+        newPostText:'',
         posts: [
             {text: "hello how r u?", likes: "2"},
             {text: "it's funny))", likes: "8"}
         ]
     }
 
+
+
 };
-export let addPost = (PostMessage) => {
+export let updateNewPostText = (newText)=>{
+    state.Profile.newPostText = newText;
+    rerenderEntireTree(state)
+}
+export let addPost = () => {
     let newPost = {
         id: 5,
-        text: PostMessage,
+        text: state.Profile.newPostText,
         likes: 0
     };
     state.Profile.posts.push(newPost);
+    state.Profile.newPostText=''
     rerenderEntireTree(state)
 }
 export default state;
