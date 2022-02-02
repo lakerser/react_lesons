@@ -1,8 +1,14 @@
-import {rerenderEntireTree} from "../render";
 
+let rerenderEntireTree = ()=>{
+    console.log('state changeda')
+}
+export const subscribe=(observer) =>{
+    rerenderEntireTree = observer
 
+}
 let state = {
     Dialogs: {
+        newMessage:'',
         MyMessages: [{message: 'Hi fuckkckckc'}, {message: 'one'}, {message: 'yoo'}],
         MyDialogs: [{name: 'Volodimir', id: '1'}, {name: 'Andrey', id: '2'}, {name: 'Svea', id: '3'}, {
             name: 'Viktor',
@@ -34,4 +40,20 @@ export let addPost = () => {
     state.Profile.newPostText=''
     rerenderEntireTree(state)
 }
+export let addMessage = ()=>{
+    let newMessage = {
+        message: state.Dialogs.newMessage
+    };
+    state.Dialogs.MyMessages.push(newMessage)
+    state.Dialogs.newMessage =''
+    rerenderEntireTree(state)
+
+}
+export let onChangeMessage =(text)=>{
+    state.Dialogs.newMessage=text
+    rerenderEntireTree(state)
+}
 export default state;
+
+
+
