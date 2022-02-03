@@ -2,7 +2,6 @@ import React from "react";
 import s from './Dialogs.module.css'
 import Message from "./message/message";
 import DialogItem from "./dialogItem/DialogsItems";
-import {onChangeMessage} from "../../state/state";
 
 const Dialogs = (props) => {
     let dialogsItems = props.state.Dialogs.MyDialogs.map(dialog =>

@@ -1,22 +1,21 @@
 import React from 'react';
 import reportWebVitals from './reportWebVitals';
-import state, {addMessage, addPost, onChangeMessage, subscribe, updateNewPostText} from "./state/state";
 import ReactDOM from "react-dom";
 import App from "./App";
+import store from "./state/state";
 
 
- let rerenderEntireTree = () => {
-
+ let rerenderEntireTree = (state) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App addMessage={addMessage} updateNewPostText={updateNewPostText} state={state} addPost={addPost} onChangeMessage={onChangeMessage}/>
+            <App addMessage={store.addMessage.bind(store)} state={state} updateNewPostText={store.updateNewPostText.bind(store)}  addPost={store.addPost.bind(store)} onChangeMessage={store.onChangeMessage.bind(store)}/>
         </React.StrictMode>,
         document.getElementById('root')
     );
 }
 
-rerenderEntireTree(state);
-subscribe(rerenderEntireTree);
+rerenderEntireTree(store.getState());
+store.subscribe(rerenderEntireTree);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
