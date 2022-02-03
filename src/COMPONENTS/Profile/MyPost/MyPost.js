@@ -1,6 +1,8 @@
 import Post from "./post/post";
 import React from "react";
 import s from './MyPost.module.css'
+import {addPostActionCreator, onPostChangeActionCreator} from "../../../state/state";
+
 
 
 const MyPosts = (props) => {
@@ -9,15 +11,11 @@ const MyPosts = (props) => {
 
     let onChangeAction = (e) => {
         let text = e.target.value
-        let action = {
-            type: 'UPDATE-NEW-POST-TEXT',
-            newText: text
-
-        };
+        let action = onPostChangeActionCreator(text)
         props.dispatch(action)
     }
     let onClickk = () => {
-        let action = {type: 'ADD-POST'};
+        let action = addPostActionCreator();
         props.dispatch(action)
     }
 

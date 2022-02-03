@@ -15,14 +15,16 @@ const App = (props) => {
                 <Navbar/>
                 <div className='app-wriper-content'>
                     <Routes>
-                        <Route path="/dialogs" element={<Dialogs
-                            state={props.state}
-                            dispatch={props.dispatch}
-                           />}/>
                         <Route path="/profile" element={<Profile
                             state={props.state}
                             dispatch={props.dispatch}
-                            />}/>
+                        />}/>
+                        <Route path="/dialogs" element={<Dialogs
+                            state={props.state}
+                            dispatch={props.dispatch}
+
+                        />}/>
+
                     </Routes>
                 </div>
 
