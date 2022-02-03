@@ -2,7 +2,7 @@ import React from 'react';
 import reportWebVitals from './reportWebVitals';
 import ReactDOM from "react-dom";
 import App from "./App";
-import store from "./state/state";
+import store from "./redux/state";
 
 
  let rerenderEntireTree = (state) => {
