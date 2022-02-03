@@ -8,7 +8,7 @@ import store from "./state/state";
  let rerenderEntireTree = (state) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App addMessage={store.addMessage.bind(store)} state={state} updateNewPostText={store.updateNewPostText.bind(store)}  addPost={store.addPost.bind(store)} onChangeMessage={store.onChangeMessage.bind(store)}/>
+            <App  state={state} dispatch={store.dispatch.bind(store)}/>
         </React.StrictMode>,
         document.getElementById('root')
     );

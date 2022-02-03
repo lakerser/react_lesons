@@ -1,8 +1,5 @@
-
-
-
 let store = {
-    _state : {
+    _state: {
         Dialogs: {
             newMessage: '',
             MyMessages: [{message: 'Hi fuckkckckc'}, {message: 'one'}, {message: 'yoo'}],
@@ -19,46 +16,52 @@ let store = {
             ]
         }
     },
-    getState(){
-      return this._state
-    },
-    callSubscriber(){
+    _callSubscriber() {
         console.log('state changeda')
     },
-    addPost(){
-        let newPost = {
-            id: 5,
-            text:this._state.Profile.newPostText,
-            likes: 0
-        };
-       this._state.Profile.posts.push(newPost);
-       this._state.Profile.newPostText=''
-        this._callSubscriber(this._state)
-    },
-    updateNewPostText (newText){
-       this._state.Profile.newPostText = newText;
-        this._callSubscriber(this._state)
-    },
-    addMessage (){
-        let newMessage = {
-            message:this._state.Dialogs.newMessage
-        };
-       this._state.Dialogs.MyMessages.push(newMessage)
-       this._state.Dialogs.newMessage =''
-        this._callSubscriber(this._state)
 
+
+    getState() {
+        return this._state
     },
     subscribe(observer) {
         this._callSubscriber = observer
-
     },
-    onChangeMessage (text){
-       this._state.Dialogs.newMessage=text
-        this._callSubscriber(this._state)
+
+
+
+
+    dispatch(action) {
+        debugger
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 5,
+                text: this._state.Profile.newPostText,
+                likes: 0
+            };
+            this._state.Profile.posts.push(newPost);
+            this._state.Profile.newPostText = ''
+            this._callSubscriber(this._state)
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.Profile.newPostText = action.newText;
+            this._callSubscriber(this._state)
+        }
+        else if(action.type==='UPDATE-NEW-MESSAGE-TEXT'){
+            this._state.Dialogs.newMessage= action.messageText
+            this._callSubscriber(this._state)
+        }
+        else if(action.type==='ADD-MESSAGE'){
+            let newMessage = {
+                message:this._state.Dialogs.newMessage
+            };
+            this._state.Dialogs.MyMessages.push(newMessage)
+            this._state.Dialogs.newMessage =''
+            this._callSubscriber(this._state)
+        }
+
     }
 
 }
-
 
 
 export default store;
