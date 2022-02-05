@@ -8,10 +8,8 @@ let store = {
         Dialogs: {
             newMessage: '',
             MyMessages: [{message: 'Hi fuckkckckc'}, {message: 'one'}, {message: 'yoo'}],
-            MyDialogs: [{name: 'Volodimir', id: '1'}, {name: 'Andrey', id: '2'}, {name: 'Svea', id: '3'}, {
-                name: 'Viktor',
-                id: '4'
-            }, {name: 'Ivan', id: '5'}]
+            MyDialogs: [{name: 'Volodimir', id: '1'}, {name: 'Andrey', id: '2'}, {name: 'Svea', id: '3'},
+                {name: 'Viktor', id: '4'}, {name: 'Ivan', id: '5'}]
         },
         Profile: {
             newPostText: '',
