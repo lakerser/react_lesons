@@ -3,34 +3,24 @@ import './App.css';
 import Header from "./COMPONENTS/Header/Header";
 import Navbar from "./COMPONENTS/Navbar/Navbar";
 import Profile from "./COMPONENTS/Profile/Profile";
-import Dialogs from "./COMPONENTS/Dialogs/Dialogs";
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
+import DialogsContainer from "./COMPONENTS/Dialogs/DialogsContainer";
 
 
-const App = (props) => {
+const App = () => {
 
     return (
-        <BrowserRouter>
-            <div className="app_wriper">
-                <Header/>
-                <Navbar/>
-                <div className='app-wriper-content'>
-                    <Routes>
-                        <Route path="/profile" element={<Profile
-                            state={props.state}
-                            dispatch={props.dispatch}
-                        />}/>
-                        <Route path="/dialogs" element={<Dialogs
-                            state={props.state}
-                            dispatch={props.dispatch}
-
-                        />}/>
-
-                    </Routes>
-                </div>
-
+        <div className="app_wriper">
+            <Header/>
+            <Navbar/>
+            <div className='app-wriper-content'>
+                <Routes>
+                    <Route path="/profile" element={<Profile/>}/>
+                    <Route path="/dialogs" element={<DialogsContainer/>}/>
+                </Routes>
             </div>
-        </BrowserRouter>
+
+        </div>
     );
 };
 
