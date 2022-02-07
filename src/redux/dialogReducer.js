@@ -27,7 +27,8 @@ const DialogReducer = (state = initialState, action) => {
 };
 
 export const onChangeTextMessageActionCreator = (text) =>
-    ({type: UPDATE_NEW_MESSAGE_TEXT, messageText: text})
+
+({type: UPDATE_NEW_MESSAGE_TEXT, messageText: text})
 
 export const addMessageActionCreator = () =>
     ({type: ADD_MESSAGE})

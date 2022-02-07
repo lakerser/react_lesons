@@ -5,7 +5,7 @@ import s from './MyPost.module.css'
 
 
 const MyPosts = (props) => {
-    let postsElements = props.post.map(p => <Post message={p.text} likesCount={p.likes}/>);
+    let postsElements = props.post.map((p,index) => <Post key={index+1} message={p.text} likesCount={p.likes}/>);
 
 
     let onChangeAction = (e) => {

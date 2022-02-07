@@ -4,12 +4,12 @@ import Message from "./message/message";
 import DialogItem from "./dialogItem/DialogsItems";
 
 const Dialogs = (props) => {
-    let dialogsItems = props.MyDialogs.map(dialog =>
-        <DialogItem name={dialog.name} id={dialog.id}/>
+    let dialogsItems = props.MyDialogs.map((dialog,index) =>
+        <DialogItem key={index+1} name={dialog.name} id={dialog.id}/>
     );
 
-    let messagesElements = props.MyMessages.map(el =>
-        <Message message={el.message}/>
+    let messagesElements = props.MyMessages.map((el,index) =>
+        <Message key={index+1} message={el.message}/>
     );
 
     let onChangeTextMessage = (e) => {
