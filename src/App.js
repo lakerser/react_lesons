@@ -3,25 +3,30 @@ import './App.css';
 import Header from "./COMPONENTS/Header/Header";
 import Navbar from "./COMPONENTS/Navbar/Navbar";
 import Profile from "./COMPONENTS/Profile/Profile";
-import { Routes, Route} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 import DialogsContainer from "./COMPONENTS/Dialogs/DialogsContainer";
+import Users from "./COMPONENTS/users/Users";
+import UsersContainer from "./COMPONENTS/users/usersContainer";
 
 
 const App = () => {
 
-    return (
-        <div className="app_wriper">
-            <Header/>
-            <Navbar/>
-            <div className='app-wriper-content'>
-                <Routes>
-                    <Route path="/profile" element={<Profile/>}/>
-                    <Route path="/dialogs" element={<DialogsContainer/>}/>
-                </Routes>
-            </div>
+	return (
+		<div className="app_wriper">
+			<Header/>
+			<Navbar/>
+			<div className='app-wriper-content'>
+				<Routes>
+					<Route path="/profile" element={<Profile/>}/>
 
-        </div>
-    );
+					<Route path="/dialogs" element={<DialogsContainer/>}/>
+
+					<Route path="/Users" element={<UsersContainer/>}/>
+				</Routes>
+			</div>
+
+		</div>
+	);
 };
 
 export default App;
