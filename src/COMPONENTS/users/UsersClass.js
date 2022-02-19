@@ -1,32 +1,39 @@
 import React from 'react';
-import classes from './users.module.css'
-import * as axios from 'axios'
-import userPhoto from '../../asets/imgages/img.png'
+import  axios from 'axios'
 
-class Users extends React.Component{
+import userPhoto from '../../asets/imgages/img.png'
+import classes from './users.module.css'
+
+class Users extends React.Component {
 
 	componentDidMount() {
-		axios.get('https://social-network.samuraijs.com/api/1.0/users')
+		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}`)
 			.then(response => {
 				this.props.setUsers(response.data.items)
 			})
 	}
 
-	// getUsers = ()=>{
-	// 	alert('update!')
-	// 	if (this.props.users.length === 0) {
-	// 		axios.get('https://social-network.samuraijs.com/api/1.0/users')
-	// 			.then(response => {
-	// 				this.props.setUsers(response.data.items)
-	// 			})
-	//
-	// 	}
-	// }
-	render(){
-
+	render() {
+		let pageCount = Math.ceil(this.props.totalUserCount / this.props.pageSize)
+		let pages = []
+		for (let i =1; i <= pageCount; i++)
+		{
+			pages.push(i)
+		}
 		return (
 			<div>
-				<button onClick={this.getUsers}>upload users</button>
+				<div>
+					{pages.map(p =>{
+						return	<span   className={this.props.currentPage === p && classes.selectedPage}>{p}</span>
+
+					})}
+
+					{/*<span>1 </span>*/}
+					{/*<span className={classes.selectedPage}>2 </span>*/}
+					{/*<span>3 </span>*/}
+					{/*<span>4 </span>*/}
+					{/*<span>5 </span>*/}
+				</div>
 				{this.props.users.map(u =>
 					<div key={u.id}>
 					<span>
@@ -41,7 +48,7 @@ class Users extends React.Component{
 								}}> unfollow</button>
 								: <button onClick={() => {
 									this.props.follow(u.id)
-								}}> follow</button>
+								}}> follow </button>
 							}
 						</div>
 					</span>
@@ -60,4 +67,5 @@ class Users extends React.Component{
 		);
 	}
 }
+
 export default Users;
