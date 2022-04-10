@@ -11,22 +11,22 @@ import UsersContainer from "./COMPONENTS/users/usersContainer";
 
 const App = () => {
 
-	return (
-		<div className="app_wriper">
-			<Header/>
-			<Navbar/>
-			<div className='app-wriper-content'>
-				<Routes>
-					<Route path="/profile" element={<Profile/>}/>
+    return (
+        <div className="app_wriper">
+            <Header/>
+            <Navbar/>
+            <div className='app-wriper-content'>
+                <Routes>
+                    <Route path="/profile" element={<Profile/>}/>
 
-					<Route path="/dialogs" element={<DialogsContainer/>}/>
+                    <Route path="/dialogs" element={<DialogsContainer/>}/>
 
-					<Route path="/Users" element={<UsersContainer/>}/>
-				</Routes>
-			</div>
+                    <Route path="/Users" element={<UsersContainer/>}/>
+                </Routes>
+            </div>
 
-		</div>
-	);
+        </div>
+    );
 };
 
 export default App;

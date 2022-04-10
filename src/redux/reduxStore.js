@@ -6,12 +6,14 @@ import UserReducer from "./userReducer";
 let reducers = combineReducers({
     Profile: ProfileReducer,
     Dialogs: DialogReducer,
-    usersPage:UserReducer
+    usersPage: UserReducer
 })
 
 let store = createStore(reducers)
 
-window.store= store
+
 
 
 export default store
+
+

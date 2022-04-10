@@ -1,17 +1,20 @@
-import React,{} from 'react';
+import React, {} from 'react';
 import Nav from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
+
 const Navbar = () => {
-    return(
+    return (
         <nav className={Nav.nav}>
             <div>
                 <div className={Nav.item}>
-                    <NavLink className={navData=>navData.isActive ? Nav.active : Nav.item} to="/Profile">Profile</NavLink>
+                    <NavLink className={navData => navData.isActive ? Nav.active : Nav.item}
+                             to="/Profile">Profile</NavLink>
 
                 </div>
 
                 <div className={Nav.item}>
-                    <NavLink className={navData=>navData.isActive ? Nav.active : Nav.item} to="/Dialogs">Massages</NavLink>
+                    <NavLink className={navData => navData.isActive ? Nav.active : Nav.item}
+                             to="/Dialogs">Massages</NavLink>
                 </div>
                 <div className={Nav.item}>
                     <NavLink className={navData => navData.isActive ? Nav.active : Nav.item}
@@ -19,7 +22,7 @@ const Navbar = () => {
                 </div>
 
                 <div className={Nav.item}>
-                    <NavLink  to="/Dialogs">News</NavLink>
+                    <NavLink to="/Dialogs">News</NavLink>
                 </div>
 
                 <div className={Nav.item}>
@@ -27,7 +30,7 @@ const Navbar = () => {
                 </div>
 
                 <div className={Nav.item}>
-                    <NavLink  to="/Dialogs">Settings</NavLink>
+                    <NavLink to="/Dialogs">Settings</NavLink>
                 </div>
 
 
@@ -36,4 +39,4 @@ const Navbar = () => {
 
     );
 }
-export default  Navbar;
+export default Navbar;
