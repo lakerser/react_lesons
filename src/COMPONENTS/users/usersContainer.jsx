@@ -1,12 +1,12 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {
-    followAC,
-    setPageAC,
-    setPreloaderAC,
-    setTotalUserCountAC,
-    setUsersAC,
-    unfollowAC
+    follow,
+    setPage,
+    setPreloader,
+    setUsers,
+    setTotalUserCount,
+    unfollow
 } from "../../redux/userReducer";
 import Users from "./UsersClass";
 import axios from "axios";
@@ -20,7 +20,8 @@ class UsersAPI extends React.Component {
             .then(response => {
                 this.props.setUsers(response.data.items)
                 this.props.setPreloader(false)
-                this.props.setTotalUsersCount(response.data.totalCount)
+                this.props.setTotalUserCount(response.data.totalCount)
+
             })
     }
 
@@ -34,21 +35,20 @@ class UsersAPI extends React.Component {
                 this.props.setPreloader(false)
 
 
-
             })
 
     }
 
     render() {
         return (<>
-                {this.props.isLoading?<Preloader/>:null}
+                {this.props.isLoading ? <Preloader/> : null}
                 <Users
                     users={this.props.users}
                     currentPage={this.props.currentPage}
                     pageSize={this.props.pageSize}
                     totalUserCount={this.props.totalUserCount}
                     follow={this.props.follow}
-                    unfollow={this.props.unFollow}
+                    unfollow={this.props.unfollow}
                     onPageChanged={this.onPageChanged}
                     setPreloader={this.props.setPreloader}
 
@@ -68,39 +68,16 @@ let mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         pageSize: state.usersPage.pageSize,
         totalUserCount: state.usersPage.totalUserCount,
-        isLoading:state.usersPage.isLoading
-
-    }
-
-}
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-            dispatch(followAC(userId))
-        },
-        unFollow: (userId) => {
-            dispatch(unfollowAC(userId))
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users))
-        },
-        setPage: (page) => {
-            dispatch(setPageAC(page))
-        },
-        setTotalUsersCount: (count) => {
-            dispatch(setTotalUserCountAC(count))
-        },
-        setPreloader: (loader) => {
-            dispatch(setPreloaderAC(loader))
-        }
-
+        isLoading: state.usersPage.isLoading
 
     }
 
 }
 
 
-export let UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPI)
+export let UsersContainer = connect(mapStateToProps,
+    {setTotalUserCount, unfollow, follow, setUsers, setPage, setPreloader}
+)(UsersAPI)
 
 
 export default UsersContainer;
