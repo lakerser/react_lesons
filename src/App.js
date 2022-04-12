@@ -7,6 +7,7 @@ import {Routes, Route} from "react-router-dom";
 import DialogsContainer from "./COMPONENTS/Dialogs/DialogsContainer";
 import Users from "./COMPONENTS/users/Users";
 import UsersContainer from "./COMPONENTS/users/usersContainer";
+import ProfileContainer from "./COMPONENTS/Profile/ProfileInfo/profileContainer";
 
 
 const App = () => {
@@ -17,7 +18,7 @@ const App = () => {
             <Navbar/>
             <div className='app-wriper-content'>
                 <Routes>
-                    <Route path="/profile" element={<Profile/>}/>
+                    <Route path="/profile/:userId" element={<ProfileContainer/>}/>
 
                     <Route path="/dialogs" element={<DialogsContainer/>}/>
 
