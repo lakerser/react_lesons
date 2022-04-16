@@ -7,7 +7,7 @@ const SWITCH_LOADER="SWITCH-LOADER"
 let initialState = {
 	users: [	],
 	currentPage:1,
-	pageSize:5,
+	pageSize:100,
 	totalUserCount:0,
 	isFetching:false
 }
