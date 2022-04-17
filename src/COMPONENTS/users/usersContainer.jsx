@@ -6,7 +6,7 @@ import {
     setPreloader,
     setUsers,
     setTotalUserCount,
-    unfollow
+    unfollow, toggleIsFollowingProgress
 } from "../../redux/userReducer";
 import Users from "./UsersClass";
 import {userAPI} from "../../api/api";
@@ -28,7 +28,6 @@ class UsersAPI extends React.Component {
 
         userAPI.getUsers(pageNumber, this.props.pageSize)
             .then(data => {
-                debugger
                 this.props.setUsers(data.items)
                 this.props.setPreloader(false)
             })
@@ -57,7 +56,9 @@ let mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         pageSize: state.usersPage.pageSize,
         totalUserCount: state.usersPage.totalUserCount,
-        isLoading: state.usersPage.isLoading
+        isLoading: state.usersPage.isLoading,
+        followingInProgress:state.usersPage.followingInProgress
+
 
     }
 
@@ -65,7 +66,7 @@ let mapStateToProps = (state) => {
 
 
 export let UsersContainer = connect(mapStateToProps,
-    {setTotalUserCount, unfollow, follow, setUsers, setPage, setPreloader}
+    {setTotalUserCount, unfollow, follow, setUsers, setPage, setPreloader,toggleIsFollowingProgress}
 )(UsersAPI)
 
 
