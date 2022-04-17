@@ -14,24 +14,27 @@ export const userAPI = {
                 return response.data
             })
     },
-    followAPI(userId){
+    followAPI(userId) {
         return instance.post(`follow/${userId}`)
-            .then(response=>{
-            return response.data
+            .then(response => {
+                return response.data
             })
     },
-    unfollowAPI(userId){
+    unfollowAPI(userId) {
         return instance.delete(`follow/${userId}`)
-            .then(response=>{
-               return  response.data
+            .then(response => {
+                return response.data
             })
     }
 
 
 }
-// export const getUsers = (currentPage, pageSize) => {
-//     return instance.get(`users?page=${currentPage}&count=${pageSize}`)
-//         .then(response => {
-//             return response.data
-//         })
-// }
+export const HeaderAPI = {
+    auth() {
+        return instance.get('auth/me')
+            .then(response => {
+                return response.data
+            })
+    }
+}
+

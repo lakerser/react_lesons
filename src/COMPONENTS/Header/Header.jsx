@@ -5,11 +5,11 @@ import {NavLink} from "react-router-dom";
 const Header = (props) => {
     return (
         <header className='header'>
-            <img src="https://i.ibb.co/0sr6jKC/mylogo-Copy.png"/>
+            <img alt='#'     src="https://i.ibb.co/0sr6jKC/mylogo-Copy.png"/>
 
             <div className='loginBlock'>
                 {props.isAuthed? props.login:
-                <NavLink to={'/login'}>login</NavLink>
+                    <NavLink to={'/login'}>login</NavLink>
                 }
             </div>
         </header>
