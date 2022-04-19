@@ -30,7 +30,7 @@ export const userAPI = {
 
 }
 export const HeaderAPI = {
-    auth() {
+    me() {
         return instance.get('auth/me')
             .then(response => {
                 return response.data

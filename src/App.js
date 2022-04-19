@@ -1,14 +1,12 @@
 import React, {} from 'react';
 import './App.css';
-import Header from "./COMPONENTS/Header/Header";
 import Navbar from "./COMPONENTS/Navbar/Navbar";
-import Profile from "./COMPONENTS/Profile/Profile";
 import {Routes, Route} from "react-router-dom";
-import DialogsContainer from "./COMPONENTS/Dialogs/DialogsContainer";
-import Users from "./COMPONENTS/users/Users";
+import DialogsContainerR from "./COMPONENTS/Dialogs/DialogsContainer";
 import UsersContainer from "./COMPONENTS/users/usersContainer";
 import ProfileContainer from "./COMPONENTS/Profile/ProfileInfo/profileContainer";
 import HeaderContainer from "./COMPONENTS/Header/headerContainer";
+import LoginPage from "./COMPONENTS/login/Login";
 
 
 const App = () => {
@@ -21,14 +19,16 @@ const App = () => {
                 <Routes>
                     <Route path="/profile/:userId" element={<ProfileContainer/>}/>
 
-                    <Route path="/dialogs" element={<DialogsContainer/>}/>
+                    <Route path="/dialogs" element={<DialogsContainerR/>}/>
 
                     <Route path="/Users" element={<UsersContainer/>}/>
+                    <Route path="/login" element={<LoginPage/>}/>
                 </Routes>
             </div>
 
         </div>
     );
 };
+
 
 export default App;
