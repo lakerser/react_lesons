@@ -7,6 +7,8 @@ import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import withAuthRedirect from "../../HOC/WithAuthRedirect";
 import {compose} from "redux";
+
+
 let mapStateToProps = (state) => {
     return {
         newMessage: state.Dialogs.newMessage,

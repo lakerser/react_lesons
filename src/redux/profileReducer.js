@@ -1,4 +1,5 @@
 import React from 'react';
+import {ProfileAPI} from "../api/api";
 
 let initialState = {
     newPostText: '',
@@ -47,10 +48,18 @@ const ProfileReducer = (state = initialState, action) => {
 
 export const addPostActionCreator = () =>
     ({type: ADD_POST})
-
 export const onPostChangeActionCreator = (text) =>
     ({type: UPDATE_NEW_POST_TEXT, newText: text})
 export const setUserProfile = (profile) =>
     ({type: SET_USER_PROFILE, profile})
 
+export const getProfileTC = (props) => (dispatch) =>{
+    debugger
+    let profileId = props.router.params.userId;
+    ProfileAPI.setUserProfile(profileId)
+        .then(data => {
+            debugger
+            dispatch(setUserProfile(data))
+        })
+}
 export default ProfileReducer;

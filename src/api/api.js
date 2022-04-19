@@ -37,4 +37,12 @@ export const HeaderAPI = {
             })
     }
 }
+export const ProfileAPI = {
+  setUserProfile(profileId){
+      return instance.get(`profile/${profileId}` )
+          .then(response => {
+              return response.data
+          })
+    }
+}
 
