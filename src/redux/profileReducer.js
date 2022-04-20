@@ -54,11 +54,9 @@ export const setUserProfile = (profile) =>
     ({type: SET_USER_PROFILE, profile})
 
 export const getProfileTC = (props) => (dispatch) =>{
-    debugger
     let profileId = props.router.params.userId;
     ProfileAPI.setUserProfile(profileId)
         .then(data => {
-            debugger
             dispatch(setUserProfile(data))
         })
 }

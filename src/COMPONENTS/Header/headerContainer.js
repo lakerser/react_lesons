@@ -25,7 +25,8 @@ const mapStateToProps = (state)=>({
     login : state.auth.login
 })
 
-export default compose(connect(mapStateToProps,{setAuthUserData,getAuth}),
+export default compose(
+    connect(mapStateToProps,{setAuthUserData,getAuth}),
 
 )(HeaderContainer)
 
