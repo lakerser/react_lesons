@@ -17,7 +17,8 @@ const App = () => {
             <Navbar/>
             <div className='app-wriper-content'>
                 <Routes>
-                    <Route path="/profile/:userId" element={<ProfileContainer/>}/>
+                    <Route path='/Profile/:userId' element={<ProfileContainer/>}/>
+                    <Route path='/Profile' element={<ProfileContainer/>}/>
 
                     <Route path="/dialogs" element={<DialogsContainerR/>}/>
 

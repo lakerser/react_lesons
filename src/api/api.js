@@ -38,11 +38,29 @@ export const HeaderAPI = {
     }
 }
 export const ProfileAPI = {
-  setUserProfile(profileId){
-      return instance.get(`profile/${profileId}` )
-          .then(response => {
-              return response.data
-          })
+    getUserProfile(profileId) {
+        return instance.get(`profile/${profileId}`)
+            .then(response => {
+                return response.data
+            })
+    },
+    getStatus(userId) {
+        debugger
+        return instance.get(`profile/status/${userId}`)
+            .then(response => {
+                debugger
+                return response.data
+            })
+    },
+    updateStatus(status){
+        debugger
+        return instance.put(`profile/status/`,{status:status})
+                .then(response => {
+                    debugger
+                    return response.data
+                })
+
+
     }
 }
 
