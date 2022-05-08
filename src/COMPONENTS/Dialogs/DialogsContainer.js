@@ -1,7 +1,6 @@
 import React from "react";
 import {
     addMessage,
-    onChangeTextMessage,
 } from "../../redux/dialogReducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
@@ -19,13 +18,8 @@ let mapStateToProps = (state) => {
 }
 
 
-
-
-
-
-
 export default compose(
-    connect(mapStateToProps, { onChangeTextMessage, addMessage}),
+    connect(mapStateToProps, {addMessage}),
     withAuthRedirect
 )
 (Dialogs);
