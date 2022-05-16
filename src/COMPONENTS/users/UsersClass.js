@@ -32,7 +32,7 @@ function Users(props) {
 
             </div>
             {
-                filteredUsers.map(u  =>
+                filteredUsers.map(u =>
                     <div key={u.id}>
 					<span>
 						<div>
