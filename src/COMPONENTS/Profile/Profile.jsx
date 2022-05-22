@@ -6,7 +6,7 @@ import {updateStatusTC} from "../../redux/profileReducer";
 const Profile = (props) => {
     return (
         <div>
-            <ProfileInfo profileId={props.profileId} updateStatusTC={props.updateStatusTC} status={props.status} profile={props.profile} />
+            <ProfileInfo{...props} profileId={props.profileId} updateStatusTC={props.updateStatusTC} status={props.status} profile={props.profile} />
             <MyPostsContainer/>
         </div>
     )

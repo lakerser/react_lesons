@@ -17,3 +17,10 @@ textarea:focus, input:focus {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.formSummaryError{
+    padding: 2px 5px;
+    border: solid 1px red;
+    color: white;
+    margin: 7px 0;
+}

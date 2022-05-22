@@ -1,4 +1,5 @@
 import {HeaderAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 let SET_USER_DATA = 'SET-USER-DATA'
 
@@ -22,13 +23,16 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-export const setAuthUserData = (id, email, login,isAuthed) => ({type: SET_USER_DATA, data: {id, email, login,isAuthed}})
+export const setAuthUserData = (id, email, login, isAuthed) => ({
+    type: SET_USER_DATA,
+    data: {id, email, login, isAuthed}
+})
 export const getAuth = () => (dispatch) => {
     HeaderAPI.me()
         .then(data => {
                 if (data.resultCode === 0) {
                     let {id, email, login} = data.data
-                    dispatch(setAuthUserData(id, email, login,true))
+                    dispatch(setAuthUserData(id, email, login, true))
                 }
             }
         )
@@ -38,6 +42,10 @@ export const logination = (email, password, rememberMe) => (dispatch) => {
         .then(data => {
             if (data.resultCode === 0) {
                 dispatch(getAuth())
+            } else {
+                let message = data.messages.length > 0 ? data.messages[0] : 'some  error'
+                dispatch(stopSubmit('login', {_error: message}))
+                debugger
             }
         })
 }
@@ -45,7 +53,7 @@ export const logOut = () => (dispatch) => {
     HeaderAPI.Logout()
         .then(data => {
             if (data.resultCode === 0) {
-                dispatch(setAuthUserData(null,null,null,false))
+                dispatch(setAuthUserData(null, null, null, false))
 
             }
         })

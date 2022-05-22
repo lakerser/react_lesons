@@ -8,18 +8,16 @@ import {getProfileTC, getStatusTC, updateStatusTC} from "../../redux/profileRedu
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-        let profileId = this.props.router.params.userId || 23439;
+        let profileId = this.props.router.params.userId || this.props.loginedUserId;
            this.props.getProfileTC(profileId)
             this.props.getStatusTC(profileId)
-
-
     }
 
 
     render() {
         return (
             <div>
-                <Profile profileId={this.props.router.params.userId || 23439}{...this.props}/>
+                <Profile profileId={this.props.router.params.userId || this.props.loginedUserId }{...this.props}/>
             </div>
         )
     }
@@ -29,6 +27,8 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => ({
     profile: state.Profile.profile,
     status : state.Profile.status,
+    loginedUserId: state.auth.id,
+    isAuthed: state.auth.isAuthed
 
 })
 export default compose(
