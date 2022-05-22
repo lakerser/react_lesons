@@ -35,6 +35,18 @@ export const HeaderAPI = {
             .then(response => {
                 return response.data
             })
+    },
+    Login(email,password,rememberMe) {
+        return instance.post('auth/login',{email,password,rememberMe})
+            .then(response => {
+                return response.data
+            })
+    },
+    Logout(){
+        return instance.delete('auth/login')
+            .then(response=>{
+                return response.data
+            })
     }
 }
 export const ProfileAPI = {
